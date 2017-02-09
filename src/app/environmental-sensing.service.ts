@@ -3,6 +3,7 @@ import { Observable } from 'rxjs/Observable';
 
 import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/share';
+import 'rxjs/add/operator/takeUntil';
 import 'rxjs/add/observable/fromEvent';
 
 import {
@@ -36,6 +37,7 @@ export class EnvironmentalSensingService {
         char.startNotifications();
         return Observable.fromEvent(char as any, 'characteristicvaluechanged').map(event => (event as any).target.value)
       })
+      .takeUntil(Observable.fromEvent(gatt.device as any, 'gattserverdisconnected'))
       .map((value: DataView) => {
         return value.getUint16(0, true) / 100.
       })

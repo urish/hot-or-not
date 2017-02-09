@@ -25,10 +25,14 @@ export class AppComponent {
 
   connect() {
     this.environmentalSensing.getDevice().subscribe((gatt: BluetoothRemoteGATTServer) => {
-      this.players.push({
+      let player = {
         name: gatt.device.name,
         temperature: this.environmentalSensing.getTemperature(gatt)
+      };
+      player.temperature.subscribe(null, null, () => {
+        this.players = this.players.filter(item => item !== player);
       });
+      this.players.push(player);
     })
   }
 }
