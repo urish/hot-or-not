@@ -3,6 +3,7 @@ import { Observable } from 'rxjs/Observable';
 
 import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/share';
+import 'rxjs/add/observable/fromEvent';
 
 import {
   BluetoothCore,
@@ -24,25 +25,21 @@ export class EnvironmentalSensingService {
   getDevice() {
     return this.ble
       .discover$({
-        filters: [{services: [EnvironmentalSensingService.GATT_PRIMARY_SERVICE]}]
+        filters: [{ services: [EnvironmentalSensingService.GATT_PRIMARY_SERVICE] }]
       });
   }
 
   getTemperature(gatt: BluetoothRemoteGATTServer): Observable<number> {
-    return new Observable((subscriber) => {
-          (async function() {
-            const svc = await gatt.getPrimaryService(EnvironmentalSensingService.GATT_PRIMARY_SERVICE);
-            const char = await svc.getCharacteristic(EnvironmentalSensingService.GATT_CHARACTERISTIC_TEMPERATURE);
-            (char as any).addEventListener('characteristicvaluechanged', event => {
-              subscriber.next(event.target.value);
-            })
-            char.startNotifications();
-          })();
-        })
-        .map((value: DataView) => {
-          return value.getUint16(0, true) / 100.
-        })
-        .share();
+    return this.ble.getPrimaryService$(gatt, EnvironmentalSensingService.GATT_PRIMARY_SERVICE)
+      .mergeMap(service => this.ble.getCharacteristic$(service, EnvironmentalSensingService.GATT_CHARACTERISTIC_TEMPERATURE))
+      .mergeMap(char => {
+        char.startNotifications();
+        return Observable.fromEvent(char as any, 'characteristicvaluechanged').map(event => (event as any).target.value)
+      })
+      .map((value: DataView) => {
+        return value.getUint16(0, true) / 100.
+      })
+      .share();
   }
 
 }
