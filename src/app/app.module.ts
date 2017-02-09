@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 import { WebBluetoothModule } from '@manekinekko/angular-web-bluetooth';
+import 'hammerjs';
 
 import { AppComponent } from './app.component';
 import { EnvironmentalSensingService } from './environmental-sensing.service';
