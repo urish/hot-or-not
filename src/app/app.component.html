@@ -1,12 +1,19 @@
-<md-toolbar>
+<md-toolbar color="primary">
   Hot or not?
+  <div class="fill"></div>
+  <button md-fab (click)="connect()"><md-icon>add</md-icon></button>
 </md-toolbar>
-<button md-raised-button (click)="connect()">Connect</button>
 
 <md-card *ngFor="let player of players">
-  <md-card-header>{{player.name}}</md-card-header>
+  <md-card-header>
+    <md-card-title>
+      {{player.name}}
+    </md-card-title>
+    <md-card-subtitle>
+      {{player.temperature|async}}
+    </md-card-subtitle>
+  </md-card-header>
   <md-card-content>
-    <div>{{player.temperature|async}}</div>
     <md-slider min="0" max="40" [value]="player.temperature|async" readonly></md-slider>
   </md-card-content>
 </md-card>

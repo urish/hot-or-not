@@ -1,4 +1,20 @@
+.fill { 
+  flex: 1;
+}
+
+md-toolbar { 
+  position: relative;
+  z-index: 10;
+}
+
+md-toolbar button[md-fab] {
+  margin-top: 40px; 
+}
+
+md-card { 
+  margin-top: 10px;
+}
+
 md-slider {
   width: 100%;
 }
-
