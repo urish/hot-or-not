@@ -33,14 +33,8 @@ export class EnvironmentalSensingService {
   getTemperature(gatt: BluetoothRemoteGATTServer): Observable<number> {
     return this.ble.getPrimaryService$(gatt, EnvironmentalSensingService.GATT_PRIMARY_SERVICE)
       .mergeMap(service => this.ble.getCharacteristic$(service, EnvironmentalSensingService.GATT_CHARACTERISTIC_TEMPERATURE))
-      .mergeMap(char => {
-        char.startNotifications();
-        return Observable.fromEvent(char as any, 'characteristicvaluechanged').map(event => (event as any).target.value)
-      })
-      .takeUntil(Observable.fromEvent(gatt.device as any, 'gattserverdisconnected'))
-      .map((value: DataView) => {
-        return value.getUint16(0, true) / 100.
-      })
+      .mergeMap(char => this.ble.observeValue$(char))
+      .map(value => value.getUint16(0, true) / 100.)
       .share();
   }
 
