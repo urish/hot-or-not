@@ -3,8 +3,6 @@ import { Observable } from 'rxjs/Observable';
 
 import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/share';
-import 'rxjs/add/operator/takeUntil';
-import 'rxjs/add/observable/fromEvent';
 
 import {
   BluetoothCore,
@@ -17,25 +15,20 @@ import {
 @Injectable()
 export class EnvironmentalSensingService {
 
-  static GATT_CHARACTERISTIC_HUMIDITY = 'humidity';
-  static GATT_CHARACTERISTIC_TEMPERATURE = 'temperature';
-  static GATT_PRIMARY_SERVICE = 'environmental_sensing';
-
   constructor(public ble: BluetoothCore) { }
 
   getDevice() {
     return this.ble
       .discover$({
-        filters: [{ services: [EnvironmentalSensingService.GATT_PRIMARY_SERVICE] }]
+        filters: [{ services: ['environmental_sensing'] }]
       });
   }
 
   getTemperature(gatt: BluetoothRemoteGATTServer): Observable<number> {
-    return this.ble.getPrimaryService$(gatt, EnvironmentalSensingService.GATT_PRIMARY_SERVICE)
-      .mergeMap(service => this.ble.getCharacteristic$(service, EnvironmentalSensingService.GATT_CHARACTERISTIC_TEMPERATURE))
+    return this.ble.getPrimaryService$(gatt, 'environmental_sensing')
+      .mergeMap(service => this.ble.getCharacteristic$(service, 'temperature'))
       .mergeMap(char => this.ble.observeValue$(char))
       .map(value => value.getUint16(0, true) / 100.)
       .share();
   }
-
 }
