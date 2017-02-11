@@ -7,10 +7,6 @@ interface PlayerInfo {
   isWinner: boolean;
 }
 
-import {
-  BluetoothRemoteGATTServer
-} from '@manekinekko/angular-web-bluetooth';
-
 import { EnvironmentalSensingService } from './environmental-sensing.service';
 
 @Component({
