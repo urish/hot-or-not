@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
+import { EnvironmentalSensingService } from './environmental-sensing.service';
+
 interface PlayerInfo {
   name: string;
   temperature: number;
   isWinner: boolean;
 }
-
-import { EnvironmentalSensingService } from './environmental-sensing.service';
 
 @Component({
   selector: 'app-root',
@@ -23,9 +23,9 @@ export class AppComponent {
   addPlayer() {
     this.environmentalSensing.getDevice()
       .subscribe(gatt => {
-        let player = {
-          name: gatt.device.name,
-          temperature: null,
+        const player = {
+          name: gatt.device.name, 
+          temperature: 0,
           isWinner: false
         };
         this.environmentalSensing.getTemperature(gatt)
@@ -35,8 +35,8 @@ export class AppComponent {
           .subscribe(value => {
             player.temperature = value;
             player.isWinner = this.players.filter(p => p.temperature > value).length === 0;
-          })
+          });
         this.players.push(player);
-      });
+     });
   }
 }
