@@ -4,17 +4,13 @@
   <button md-fab (click)="connect()"><md-icon>add</md-icon></button>
 </md-toolbar>
 
-<md-card *ngFor="let player of players">
+<md-card *ngFor="let player of players" class="player-card" [class.hot]="player.isWinner">
   <md-card-header>
-    <md-card-title>
-      {{player.name}}
-    </md-card-title>
-    <md-card-subtitle>
-      {{player.temperature|async}}
-    </md-card-subtitle>
+    {{player.name}}
   </md-card-header>
   <md-card-content>
-    <md-slider min="0" max="40" [value]="player.temperature|async" readonly></md-slider>
+    <md-slider min="0" max="40" [value]="player.temperature" readonly></md-slider>
+    <span>{{player.temperature}}</span>
   </md-card-content>
 </md-card>
 

@@ -3,7 +3,8 @@ import { Observable } from 'rxjs/Observable';
 
 interface PlayerInfo {
   name: string;
-  temperature: Observable<number>;
+  temperature: number;
+  isWinner: boolean;
 }
 
 import {
@@ -24,15 +25,22 @@ export class AppComponent {
   }
 
   connect() {
-    this.environmentalSensing.getDevice().subscribe((gatt: BluetoothRemoteGATTServer) => {
-      let player = {
-        name: gatt.device.name,
-        temperature: this.environmentalSensing.getTemperature(gatt)
-      };
-      player.temperature.subscribe(null, null, () => {
-        this.players = this.players.filter(item => item !== player);
+    this.environmentalSensing.getDevice()
+      .subscribe((gatt: BluetoothRemoteGATTServer) => {
+        let player = {
+          name: gatt.device.name,
+          temperature: null,
+          isWinner: false
+        };
+        this.environmentalSensing.getTemperature(gatt)
+         .finally(() => {
+            this.players = this.players.filter(item => item !== player);
+          })
+          .subscribe(value => {
+            player.temperature = value;
+            player.isWinner = this.players.filter(p => p.temperature > value).length === 0;
+          })
+        this.players.push(player);
       });
-      this.players.push(player);
-    })
   }
 }

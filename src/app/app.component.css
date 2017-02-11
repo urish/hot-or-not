@@ -13,8 +13,27 @@ md-toolbar button[md-fab] {
 
 md-card { 
   margin-top: 10px;
+  transition: background linear 0.2s;
 }
 
-md-slider {
-  width: 100%;
+md-card.hot {
+  background: #f88;
+}
+
+.player-card md-card-header {
+  margin-bottom: 0;
+}
+
+.player-card md-card-content {
+  display: flex;  
+  align-items: center;
+}
+
+.player-card md-slider {
+  flex: 1;
+}
+
+.player-card span {
+  min-width: 50px;
+  text-align: right;
 }
