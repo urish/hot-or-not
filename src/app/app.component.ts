@@ -24,9 +24,9 @@ export class AppComponent {
   constructor(private environmentalSensing: EnvironmentalSensingService) {
   }
 
-  connect() {
+  addPlayer() {
     this.environmentalSensing.getDevice()
-      .subscribe((gatt: BluetoothRemoteGATTServer) => {
+      .subscribe(gatt => {
         let player = {
           name: gatt.device.name,
           temperature: null,

@@ -1,7 +1,7 @@
 <md-toolbar color="primary">
   Hot or Not?
   <div class="fill"></div>
-  <button md-fab (click)="connect()"><md-icon>add</md-icon></button>
+  <button md-fab (click)="addPlayer()"><md-icon>add</md-icon></button>
 </md-toolbar>
 
 <md-card *ngFor="let player of players" class="player-card" [class.hot]="player.isWinner">
