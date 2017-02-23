@@ -18,7 +18,7 @@ import { EnvironmentalSensingService } from './environmental-sensing.service';
     FormsModule,
     HttpModule,
     MaterialModule.forRoot(),
-    WebBluetoothModule.forRoot(),
+    WebBluetoothModule.forRoot({enableTracing: false}),
   ],
   providers: [EnvironmentalSensingService],
   bootstrap: [AppComponent]
