@@ -15,7 +15,7 @@
   version "1.0.16"
   resolved "https://registry.yarnpkg.com/@angular-cli/base-href-webpack/-/base-href-webpack-1.0.16.tgz#4296a2ff7db84ddc2e67c2a107e276f72463ff8d"
 
-"@angular/common@^2.3.1", "@angular/common@^2.4.7":
+"@angular/common@^2.3.1", "@angular/common@^2.4.0":
   version "2.4.7"
   resolved "https://registry.yarnpkg.com/@angular/common/-/common-2.4.7.tgz#9316daf90e353e67187d2e0afec5521c2001bd4b"
 
@@ -27,11 +27,11 @@
     minimist "^1.2.0"
     reflect-metadata "^0.1.2"
 
-"@angular/compiler@^2.3.1", "@angular/compiler@^2.4.7":
+"@angular/compiler@^2.3.1", "@angular/compiler@^2.4.0":
   version "2.4.7"
   resolved "https://registry.yarnpkg.com/@angular/compiler/-/compiler-2.4.7.tgz#008c1f0d1409c46fbba215fe8ab0d886252c7ff0"
 
-"@angular/core@^2.3.1", "@angular/core@^2.4.7":
+"@angular/core@^2.3.1", "@angular/core@^2.4.0":
   version "2.4.7"
   resolved "https://registry.yarnpkg.com/@angular/core/-/core-2.4.7.tgz#8bed9a2d37e81342bd41d189df88aa3e02393cfb"
 
@@ -51,7 +51,7 @@
   version "2.4.7"
   resolved "https://registry.yarnpkg.com/@angular/platform-browser-dynamic/-/platform-browser-dynamic-2.4.7.tgz#9632586f9ce596186be4c124c3ea0a4a74b27b46"
 
-"@angular/platform-browser@^2.3.1", "@angular/platform-browser@^2.4.7":
+"@angular/platform-browser@^2.3.1", "@angular/platform-browser@^2.4.0":
   version "2.4.7"
   resolved "https://registry.yarnpkg.com/@angular/platform-browser/-/platform-browser-2.4.7.tgz#19f7996a70f07b34ce8d6d0e255544e62cae75f1"
 
@@ -65,20 +65,20 @@
   dependencies:
     tsickle "^0.2"
 
-"@manekinekko/angular-web-bluetooth@^0.4.0":
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/@manekinekko/angular-web-bluetooth/-/angular-web-bluetooth-0.4.0.tgz#43128876ba7a88641494f5607718ab4936856b37"
+"@manekinekko/angular-web-bluetooth@^0.4.3":
+  version "0.4.3"
+  resolved "https://registry.yarnpkg.com/@manekinekko/angular-web-bluetooth/-/angular-web-bluetooth-0.4.3.tgz#a98b9d6fe6df6e97a3af4e1a4dd44c974f04bae2"
   dependencies:
-    "@angular/common" "^2.4.7"
-    "@angular/compiler" "^2.4.7"
-    "@angular/core" "^2.4.7"
-    "@angular/platform-browser" "^2.4.7"
+    "@angular/common" "^2.4.0"
+    "@angular/compiler" "^2.4.0"
+    "@angular/core" "^2.4.0"
+    "@angular/platform-browser" "^2.4.0"
     "@types/web-bluetooth" "^0.0.2"
-    core-js "2.4.1"
+    core-js "^2.4.1"
     rimraf "^2.5.4"
-    rxjs "^5.0.2"
-    typescript "^2.0.10"
-    zone.js "^0.7.4"
+    rxjs "^5.1.0"
+    typescript "^2.2.1"
+    zone.js "^0.7.6"
 
 "@ngtools/json-schema@^1.0.0":
   version "1.0.2"
@@ -1008,7 +1008,7 @@ cookie@0.3.1:
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/cookie/-/cookie-0.3.1.tgz#e7e0a1f9ef43b4c8ba925c5c5a96e806d16873bb"
 
-core-js@2.4.1, core-js@^2.2.0, core-js@^2.4.0, core-js@^2.4.1:
+core-js@^2.2.0, core-js@^2.4.0, core-js@^2.4.1:
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.4.1.tgz#4de911e667b0eae9124e34254b53aea6fc618d3e"
 
@@ -4240,7 +4240,7 @@ rx-lite@^3.1.2:
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/rx-lite/-/rx-lite-3.1.2.tgz#19ce502ca572665f3b647b10939f97fd1615f102"
 
-rxjs@^5.0.1, rxjs@^5.0.2:
+rxjs@^5.0.1, rxjs@^5.1.0:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-5.1.0.tgz#0aa9018b7f440b505fa42bd742b6738be550e720"
   dependencies:
@@ -4873,7 +4873,11 @@ type-is@~1.6.14:
     media-typer "0.3.0"
     mime-types "~2.1.13"
 
-typescript@^2.0.10, typescript@~2.0.3:
+typescript@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.2.1.tgz#4862b662b988a4c8ff691cc7969622d24db76ae9"
+
+typescript@~2.0.3:
   version "2.0.10"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.0.10.tgz#ccdd4ed86fd5550a407101a0814012e1b3fac3dd"
 
@@ -5351,6 +5355,6 @@ yeast@0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/yeast/-/yeast-0.1.2.tgz#008e06d8094320c372dbc2f8ed76a0ca6c8ac419"
 
-zone.js@^0.7.2, zone.js@^0.7.4:
+zone.js@^0.7.2, zone.js@^0.7.6:
   version "0.7.6"
   resolved "https://registry.yarnpkg.com/zone.js/-/zone.js-0.7.6.tgz#fbbc39d3e0261d0986f1ba06306eb3aeb0d22009"
