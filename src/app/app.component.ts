@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
 
 import { EnvironmentalSensingService } from './environmental-sensing.service';
 
@@ -34,7 +33,7 @@ export class AppComponent {
           })
           .subscribe(value => {
             player.temperature = value;
-            player.isWinner = this.players.filter(p => p.temperature > value).length === 0;
+            player.isWinner = !this.players.some(p => p.temperature > value);
           });
         this.players.push(player);
      });
